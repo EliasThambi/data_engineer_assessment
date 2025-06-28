@@ -91,11 +91,31 @@ For MySQL Docker image reference:
 
 **Document your database design and solution here:**
 
-- Explain your schema and any design decisions
+- I have taken starschema as the database design. The main table is taken as **property** , all other tables have property_id which is foreign key referencing the property    table.
+- Other tables are :
+    - **Valuation**
+    - **Taxes**
+    - **Rehab**
+    - **Hoa**
+    - **Leads**
 - Give clear instructions on how to run and test your script
-
+    Step_1 : Fork and clone the repo so as to get your own copy.
+    Step_2 : Delete the cleanData.csv for seeing actual flow.(scripta > cleanData.csv). If not deleted also it will work.
+    Step_3 : Execute the sql script.(sql > sql_scripts.sql). Copy the scripts and paste it in SQL Query editor in Workbench and execute it.
+    Step_4 : Open the cloned project in VS code.
+    Step_5 : Now in terminal install required dependencies if do not have(pandas,mysql-connector-python) with 'pip install pandas' command
+    Step_6 : Now in terminal go inside scripts folder(cd .\scripts\) execute data_ET.py file(python data_ET.py). This will load and transform the data and create a new                   clean csv(ie cleanData.csv)
+    Step_7 : Now execute dataLoad.py(python dataLoad.py). This loads the data into respective tables.
+   
 **Document your ETL logic here:**
 
 - Outline your approach and design
+      Read the data > create a cleaning config to specify the type and default value > If any null or empty values add default values according to the type > create a clean
+      csv file(Creating a new file is not necessary with same dataframe we can proceed if required) 
+      In data Load > Open the db connection > make sure connection is valid > make sure the tables are created > run the load script 
 - Provide instructions and code snippets for running the ETL
+  Step 1 : Create required tables in any databse using the sql create script in sql > sql_scripts.
+  Step 2 : Install required dependencies
+  Step 3 : Run  data_ET.py file(python data_ET.py) then run dataLoad.py(python dataLoad.py)
 - List any requirements
+    `pandas`, `mysql-connector-python` 
